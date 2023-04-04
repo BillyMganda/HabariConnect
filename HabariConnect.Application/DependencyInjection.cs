@@ -1,4 +1,7 @@
 ﻿using HabariConnect.Application.Commands;
+using HabariConnect.Application.Queries;
+using HabariConnect.Application.QueryHandlers;
+using HabariConnect.Domain.DTOs.User;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -11,13 +14,8 @@ namespace HabariConnect.Application
         {            
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             services.AddScoped<IMediator, Mediator>();
-            services.AddScoped<IRequestHandler<GetAllCustomerQuery, List<Customer>>, GetAllCustomerHandler>();
-            services.AddScoped<IRequestHandler<GetCustomerByEmailQuery, Customer>, GetCustomerByEmailHandler>();
-            services.AddScoped<IRequestHandler<GetCustomerByIdQuery, Customer>, GetCustomerByIdHandler>();
-            services.AddScoped<IRequestHandler<CreateCustomerCommand, CustomerResponse>, CreateCustomerHandler>();
-            services.AddScoped<IRequestHandler<DeleteCustomerCommand, string>, DeleteCustomerHandler>();
-            services.AddScoped<IRequestHandler<EditCustomerCommand, CustomerResponse>, EditCustomerHandler>();
-            services.AddMediatR(typeof(GetCustomerByEmailHandler).GetTypeInfo().Assembly);
+            // User
+            services.AddScoped<IRequestHandler<GetUserByIdQuery, UserGetDto>, GetUserByIdQueryHandler>();  
         }
     }
 }

@@ -14,8 +14,4 @@
     <ProjectReference Include="..\HabariConnect.Domain\HabariConnect.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="QueryHandlers\" />
-  </ItemGroup>
-
 </Project>
