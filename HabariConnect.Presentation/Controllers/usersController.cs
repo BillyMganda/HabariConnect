@@ -24,10 +24,18 @@ namespace HabariConnect.Presentation.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("id")]
         public async Task<IActionResult> GetUserById(Guid id)
         {
             var query = new GetUserByIdQuery { Id = id };
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("email")]
+        public async Task<IActionResult> GetUserByEmail(string email)
+        {
+            var query = new GetUserByEmailQuery { Email = email };
             var result = await _mediator.Send(query);
             return Ok(result);
         }
