@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32721.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabariConnect.Presentation", "HabariConnect.Presentation\HabariConnect.Presentation.csproj", "{6FC7BCB2-E5FF-4426-BCF3-AD9632456907}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabariConnect.Domain", "HabariConnect.Domain\HabariConnect.Domain.csproj", "{FD214D2C-0DB0-4FFD-AC94-37DB59FF83A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabariConnect.Application", "HabariConnect.Application\HabariConnect.Application.csproj", "{5B9ABCB3-AA95-4E96-835B-ACE1F8D54C41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabariConnect.Infrastructure", "HabariConnect.Infrastructure\HabariConnect.Infrastructure.csproj", "{0B3BD95F-4E3D-4A76-9AED-151786D012D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FC7BCB2-E5FF-4426-BCF3-AD9632456907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FC7BCB2-E5FF-4426-BCF3-AD9632456907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FC7BCB2-E5FF-4426-BCF3-AD9632456907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FC7BCB2-E5FF-4426-BCF3-AD9632456907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD214D2C-0DB0-4FFD-AC94-37DB59FF83A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD214D2C-0DB0-4FFD-AC94-37DB59FF83A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD214D2C-0DB0-4FFD-AC94-37DB59FF83A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD214D2C-0DB0-4FFD-AC94-37DB59FF83A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B9ABCB3-AA95-4E96-835B-ACE1F8D54C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B9ABCB3-AA95-4E96-835B-ACE1F8D54C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B9ABCB3-AA95-4E96-835B-ACE1F8D54C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B9ABCB3-AA95-4E96-835B-ACE1F8D54C41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B3BD95F-4E3D-4A76-9AED-151786D012D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B3BD95F-4E3D-4A76-9AED-151786D012D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B3BD95F-4E3D-4A76-9AED-151786D012D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B3BD95F-4E3D-4A76-9AED-151786D012D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDEC7EB9-287F-4D12-BEFA-1E8E28AA0A46}
+	EndGlobalSection
+EndGlobal
