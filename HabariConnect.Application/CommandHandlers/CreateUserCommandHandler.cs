@@ -35,7 +35,10 @@ namespace HabariConnect.Application.CommandHandlers
                 LastName = request.LastName,
                 Email = request.Email,
                 Handle = request.Handle,
-                TermsAgreed = request.TermsAgreed
+                TermsAgreed = request.TermsAgreed,
+                CreatedOn = DateTime.UtcNow,
+                LastModified = DateTime.UtcNow,
+
             };
             user.SetPassword(request.Password);
 

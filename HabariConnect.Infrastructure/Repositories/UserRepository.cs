@@ -13,34 +13,39 @@ namespace HabariConnect.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<User> GetByIdAsync(Guid id)
+        public async Task<User> GetUserByIdAsync(Guid id)
         {
             return await _dbContext.Users.FindAsync(id);
         }
 
-        public async Task<User> GetByEmailAsync(string email)
+        public async Task<User> GetUserByEmailAsync(string email)
         {
-            return await _dbContext.Users.SingleOrDefaultAsync(u => u.Email == email);
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
 
-        public async Task<User> GetByHandleAsync(string handle)
+        public async Task<User> GetUserByHandleAsync(string handle)
         {
-            return await _dbContext.Users.SingleOrDefaultAsync(u => u.Handle == handle);
+            return await _dbContext.Users.FirstOrDefaultAsync(u => u.Handle == handle);
         }
 
-        public async Task CreateAsync(User user)
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await _dbContext.Users.ToListAsync();
+        }
+
+        public async Task AddUserAsync(User user)
         {
             await _dbContext.Users.AddAsync(user);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(User user)
+        public async Task UpdateUserAsync(User user)
         {
-            _dbContext.Users.Update(user);
+            _dbContext.Entry(user).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(User user)
+        public async Task DeleteUserAsync(User user)
         {
             _dbContext.Users.Remove(user);
             await _dbContext.SaveChangesAsync();

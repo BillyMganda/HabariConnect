@@ -4,11 +4,12 @@ namespace HabariConnect.Domain.Interfaces
 {
     public interface IUserRepository
     {
-        Task<User> GetByIdAsync(Guid id);
-        Task<User> GetByEmailAsync(string email);
-        Task<User> GetByHandleAsync(string handle);
-        Task CreateAsync(User user);
-        Task UpdateAsync(User user);
-        Task DeleteAsync(User user);
+        Task<User> GetUserByIdAsync(Guid id);
+        Task<User> GetUserByEmailAsync(string email);
+        Task<User> GetUserByHandleAsync(string handle);
+        Task<IEnumerable<User>> GetAllUsersAsync();
+        Task AddUserAsync(User user);
+        Task UpdateUserAsync(User user);
+        Task DeleteUserAsync(User user);
     }
 }
