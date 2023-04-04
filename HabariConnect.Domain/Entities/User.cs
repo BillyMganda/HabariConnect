@@ -13,5 +13,6 @@
         public DateTime LastModified { get; set; }
         public string ForgotPasswordToken { get; set; } = string.Empty;
         public bool TermsAgreed { get; set; }
+        public bool IsActive { get; set; }
     }
 }
