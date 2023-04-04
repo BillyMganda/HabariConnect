@@ -4,7 +4,7 @@ using MediatR;
 
 namespace HabariConnect.Application.Commands
 {
-    public class CreateUserCommand : IRequest<User>
+    public class CreateUserCommand : IRequest<UserGetDto>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
