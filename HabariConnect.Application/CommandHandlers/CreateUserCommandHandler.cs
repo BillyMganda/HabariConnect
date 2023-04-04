@@ -24,6 +24,9 @@ namespace HabariConnect.Application.CommandHandlers
                 LastName = request.User.LastName,
                 Email = request.User.Email,
                 Handle = request.User.Handle,
+                CreatedOn = DateTime.Now,
+                LastModified = DateTime.Now,
+                ForgotPasswordToken = "",
                 TermsAgreed = request.User.TermsAgreed,
                 IsActive = true
             };
