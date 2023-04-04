@@ -1,5 +1,4 @@
-﻿using HabariConnect.Application.Commands;
-using HabariConnect.Application.Queries;
+﻿using HabariConnect.Application.Queries;
 using HabariConnect.Application.QueryHandlers;
 using HabariConnect.Domain.DTOs.User;
 using MediatR;
@@ -15,7 +14,8 @@ namespace HabariConnect.Application
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             services.AddScoped<IMediator, Mediator>();
             // User
-            services.AddScoped<IRequestHandler<GetUserByIdQuery, UserGetDto>, GetUserByIdQueryHandler>();  
+            services.AddScoped<IRequestHandler<GetUserByIdQuery, UserGetDto>, GetUserByIdQueryHandler>();
+            services.AddScoped<IRequestHandler<GetUserByEmailQuery, UserGetDto>, GetUserByEmailQueryHandler>();
         }
     }
 }
