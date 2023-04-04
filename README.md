@@ -1,1 +1,2 @@
 # HabariConnect
+Welcome to HabariConnect, a social media platform built using CQRS with MediatR, clean architecture, RabbitMQ, .NET 6, Ocelot API Gateway, and MS-SQL. HabariConnect is designed to facilitate connections and community building, with a focus on delivering a seamless and responsive user experience. Our codebase is built using the latest industry best practices and patterns, ensuring scalability, maintainability, and extensibility. We welcome contributions from the community, so feel free to fork our repo and help us build the future of social media.
