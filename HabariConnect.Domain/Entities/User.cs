@@ -7,9 +7,11 @@
         public string LastName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Handle { get; set; } = string.Empty;
-        public byte[] password_hash { get; set; } = new byte[32];
-        public byte[] password_salt { get; set; } = new byte[32];
+        public byte[] PasswordHash { get; set; } = new byte[32];
+        public byte[] PasswordSalt { get; set; } = new byte[32];
         public DateTime CreatedOn { get; set; }
+        public DateTime LastModified { get; set; }
         public string ForgotPasswordToken { get; set; } = string.Empty;
+        public bool TermsAgreed { get; set; }
     }
 }
