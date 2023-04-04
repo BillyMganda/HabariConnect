@@ -14,4 +14,10 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HabariConnect.Application\HabariConnect.Application.csproj" />
+    <ProjectReference Include="..\HabariConnect.Domain\HabariConnect.Domain.csproj" />
+    <ProjectReference Include="..\HabariConnect.Infrastructure\HabariConnect.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
