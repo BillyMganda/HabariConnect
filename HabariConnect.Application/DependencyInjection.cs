@@ -19,6 +19,7 @@ namespace HabariConnect.Application
             services.AddScoped<IRequestHandler<GetUserByIdQuery, UserGetDto>, GetUserByIdQueryHandler>();
             services.AddScoped<IRequestHandler<CreateUserCommand, UserGetDto>, CreateUserCommandHandler>();
             services.AddScoped<IRequestHandler<GetUserByEmailQuery, UserGetDto>, GetUserByEmailQueryHandler>();
+            services.AddScoped<IRequestHandler<GetUserByHandleQuery, UserGetDto>, GetUserByHandleQueryHandler>();
         }
     }
 }

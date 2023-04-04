@@ -39,5 +39,13 @@ namespace HabariConnect.Presentation.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+        [HttpGet("handle")]
+        public async Task<IActionResult> GetUserByHandle(string handle)
+        {
+            var query = new GetUserByHandleQuery { Handle = handle };
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
