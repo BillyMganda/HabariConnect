@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
     <Folder Include="QueryHandlers\" />
     <Folder Include="Queries\" />
   </ItemGroup>
