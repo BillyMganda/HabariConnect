@@ -1,4 +1,5 @@
 ﻿using HabariConnect.Application.Commands;
+using HabariConnect.Application.Exceptions;
 using HabariConnect.Domain.DTOs.User;
 using HabariConnect.Domain.Entities;
 using HabariConnect.Domain.Interfaces;
@@ -18,6 +19,12 @@ namespace HabariConnect.Application.CommandHandlers
 
         public async Task<UserGetDto> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+            //var user_ = await _userRepository.GetUserByEmailAsync(request.User.Email);
+            //if (user_ != null)
+            //{
+            //    throw new NotFoundException($"User with email {request.User.Email} exists.");
+            //}
+
             var user = new User
             {
                 FirstName = request.User.FirstName,
