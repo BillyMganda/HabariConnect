@@ -66,5 +66,13 @@ namespace HabariConnect.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
             return user;
         }
+
+        public async Task<IEnumerable<User>> SearchUserAsync(string fname, string lname)
+        {
+            var users = await _dbContext.Users
+                .Where(u => EF.Functions.Like(u.FirstName, "%" + fname + "%") && EF.Functions.Like(u.LastName, "%" + lname + "%"))
+                .ToListAsync();
+            return users;                
+        }
     }
 }
