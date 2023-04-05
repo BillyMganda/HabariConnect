@@ -64,5 +64,13 @@ namespace HabariConnect.Presentation.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpPost("enable")]
+        public async Task<IActionResult> EnableUserById(Guid id)
+        {
+            var command = new EnableUserCommand { Id = id };
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }
