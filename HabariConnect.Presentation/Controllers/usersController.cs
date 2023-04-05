@@ -72,5 +72,13 @@ namespace HabariConnect.Presentation.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpPut()]
+        public async Task<IActionResult> Updateuser(UserModifyDto user)
+        {
+            var command = new UpdateUserCommand { UserModifyDto = user };
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }
