@@ -58,5 +58,13 @@ namespace HabariConnect.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
             return user;
         }
+
+        public async Task<User> EnableUserAsync(Guid id)
+        {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
+            user.IsActive = true;
+            await _dbContext.SaveChangesAsync();
+            return user;
+        }
     }
 }

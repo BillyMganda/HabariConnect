@@ -12,5 +12,6 @@ namespace HabariConnect.Domain.Interfaces
         Task UpdateUserAsync(User user);
         Task DeleteUserAsync(User user);
         Task<User> DisableUserAsync(Guid id);
+        Task<User> EnableUserAsync(Guid id);
     }
 }
