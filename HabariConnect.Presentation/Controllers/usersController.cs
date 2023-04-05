@@ -56,5 +56,13 @@ namespace HabariConnect.Presentation.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+        [HttpPost("disable")]
+        public async Task<IActionResult> DisableUserById(Guid id)
+        {
+            var command = new DisableUserCommand { Id = id };
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }
