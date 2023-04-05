@@ -88,5 +88,13 @@ namespace HabariConnect.Presentation.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchUsers(string FirstName, string LastName)
+        {
+            var query = new SearchUsersQuery { FirstName = FirstName, LastName = LastName };
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }
