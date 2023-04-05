@@ -6,7 +6,7 @@ using MediatR;
 
 namespace HabariConnect.Application.QueryHandlers
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserGetDto>>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, IEnumerable<UserGetDto>>
     {
         private readonly IUserRepository _userRepository;
         public GetAllUsersQueryHandler(IUserRepository userRepository)
@@ -14,15 +14,22 @@ namespace HabariConnect.Application.QueryHandlers
             _userRepository = userRepository;
         }
 
-        public async Task<List<UserGetDto>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<UserGetDto>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetAllUsersAsync();
-            if (user == null)
-            {
-                throw new NotFoundException($"Users not found.");
-            }
+            var users = await _userRepository.GetAllUsersAsync();
+            var userGetDtos = users.Select(user => new UserGetDto
+            {                
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Handle = user.Handle,
+                CreatedOn = user.CreatedOn,
+                LastModified = user.LastModified,
+                TermsAgreed = user.TermsAgreed,
+                IsActive = user.IsActive
+            });
 
-            return (List<UserGetDto>)await _userRepository.GetAllUsersAsync();
+            return userGetDtos;
         }
     }
 }

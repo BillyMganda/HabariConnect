@@ -47,5 +47,14 @@ namespace HabariConnect.Presentation.Controllers
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var query = new GetAllUsersQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
     }
 }

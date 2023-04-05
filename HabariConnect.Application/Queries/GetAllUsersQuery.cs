@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HabariConnect.Application.Queries
 {
-    public class GetAllUsersQuery : IRequest<List<UserGetDto>>
+    public class GetAllUsersQuery : IRequest<IEnumerable<UserGetDto>>
     {
     }
 }
