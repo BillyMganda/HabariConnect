@@ -80,5 +80,13 @@ namespace HabariConnect.Presentation.Controllers
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteUser(Guid id)
+        {
+            var command = new DeleteUserCommand { Id = id };
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
     }
 }
