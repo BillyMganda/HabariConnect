@@ -16,6 +16,7 @@ namespace HabariConnect.Infrastructure
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IUserAuthorization, UserAuthorization>();
         }
     }
 }
