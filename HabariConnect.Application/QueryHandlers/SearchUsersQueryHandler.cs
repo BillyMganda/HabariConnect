@@ -2,6 +2,7 @@
 using HabariConnect.Domain.DTOs.User;
 using HabariConnect.Domain.Interfaces;
 using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace HabariConnect.Application.QueryHandlers
 {
@@ -16,8 +17,10 @@ namespace HabariConnect.Application.QueryHandlers
 
         public async Task<IEnumerable<UserGetDto>> Handle(SearchUsersQuery request, CancellationToken cancellationToken)
         {
-            var users = await _userRepository.SearchUsersAsync(request.FirstName, request.LastName);
+            var validationContext = new ValidationContext(request);
+            Validator.ValidateObject(request, validationContext, validateAllProperties: true);
 
+            var users = await _userRepository.SearchUsersAsync(request.FirstName, request.LastName);
             var userGetDtos = users.Select(user => new UserGetDto
             {
                 FirstName = user.FirstName,
@@ -29,7 +32,6 @@ namespace HabariConnect.Application.QueryHandlers
                 TermsAgreed = user.TermsAgreed,
                 IsActive = user.IsActive
             });
-
             return userGetDtos;
         }
     }

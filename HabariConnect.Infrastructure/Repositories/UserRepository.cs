@@ -69,10 +69,17 @@ namespace HabariConnect.Infrastructure.Repositories
 
         public async Task<IEnumerable<User>> SearchUsersAsync(string fname, string lname)
         {
-            var users = await _dbContext.Users
-                .Where(u => EF.Functions.Like(u.FirstName, "%" + fname + "%") && EF.Functions.Like(u.LastName, "%" + lname + "%"))
-                .ToListAsync();
-            return users;                
+            var query = _dbContext.Users.AsQueryable();
+            if (!string.IsNullOrEmpty(fname))
+            {
+                query = query.Where(u => u.FirstName.Contains(fname));
+            }
+            if (!string.IsNullOrEmpty(lname))
+            {
+                query = query.Where(u => u.LastName.Contains(lname));
+            }
+            var users = await query.ToListAsync();
+            return users;
         }
     }
 }

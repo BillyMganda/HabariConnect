@@ -90,7 +90,7 @@ namespace HabariConnect.Presentation.Controllers
         }
 
         [HttpGet("search")]
-        public async Task<IActionResult> SearchUsers(string FirstName, string LastName)
+        public async Task<IActionResult> SearchUsers([FromQuery] string FirstName = null, [FromQuery] string LastName = null)
         {
             var query = new SearchUsersQuery { FirstName = FirstName, LastName = LastName };
             var result = await _mediator.Send(query);
