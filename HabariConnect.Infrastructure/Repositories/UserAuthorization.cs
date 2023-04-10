@@ -4,6 +4,7 @@ using HabariConnect.Domain.Interfaces;
 using HabariConnect.Infrastructure.Data;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -12,9 +13,11 @@ namespace HabariConnect.Infrastructure.Repositories
     public class UserAuthorization : IUserAuthorization
     {
         private readonly HabariConnectDbContext _dbContext;
-        public UserAuthorization(HabariConnectDbContext dbContext)
+        private readonly IConfiguration _configuration;
+        public UserAuthorization(HabariConnectDbContext dbContext, IConfiguration configuration)
         {
             _dbContext = dbContext;
+            _configuration = configuration;
         }
 
         public async Task<User> GetUserByEmailAsync(string Email)
