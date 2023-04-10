@@ -133,5 +133,15 @@ namespace HabariConnect.Infrastructure.Repositories
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
+        public async Task UpdateUserAsync(UserModifyDto dto)
+        {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == dto.Id);
+            if(user != null)
+            {
+                user.FirstName = dto.FirstName;
+                user.LastName = dto.LastName;
+            }
+        }
     }
 }
