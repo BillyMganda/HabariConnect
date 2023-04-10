@@ -143,5 +143,18 @@ namespace HabariConnect.Infrastructure.Repositories
                 user.LastName = dto.LastName;
             }
         }
+
+        public Task<string> CreateForgotPasswordToken()
+        {
+            const int tokenLength = 32;
+
+            using var randomNumberGenerator = RandomNumberGenerator.Create();
+            var tokenBytes = new byte[tokenLength];
+            randomNumberGenerator.GetBytes(tokenBytes);
+
+            var token = Convert.ToBase64String(tokenBytes);
+            return Task.FromResult(token);
+        }
+
     }
 }
