@@ -5,6 +5,8 @@ using HabariConnect.Infrastructure.Data;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -60,9 +62,21 @@ namespace HabariConnect.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task SendUserWelcomeEmailAsync(string Email)
+        public async Task SendUserWelcomeEmailAsync(string recipient, string subject, string body)
         {
-
+            var smtpSettings = _configuration.GetSection("SmtpSettings");
+            using (var client = new SmtpClient(smtpSettings["Server"], int.Parse(smtpSettings["Port"])))
+            {
+                client.EnableSsl = bool.Parse(smtpSettings["UseSsl"]);
+                client.Credentials = new NetworkCredential(smtpSettings["Username"], smtpSettings["Password"]);
+                
+                using (var message = new MailMessage(smtpSettings["Username"], recipient))
+                {
+                    message.Subject = subject;
+                    message.Body = body;                                        
+                    await client.SendMailAsync(message);
+                }
+            }
         }
     }
 }
