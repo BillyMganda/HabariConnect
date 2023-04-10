@@ -10,8 +10,8 @@ namespace HabariConnect.Domain.Interfaces
         public Task AddNewUserAsync(UserCreateDto Dto);
         public Task SendUserWelcomeEmailAsync(string recipient, string subject, string body);
         public bool VerifyPasswordAsync(string Password, byte[] PasswordHash, byte[] PasswordSalt);
-        public string CreateJwtToken(); //create login_dto
-        public Task UpdateUserAsync(User user); //create update_dto
+        public string CreateJwtToken(User user);
+        public Task UpdateUserAsync(UserModifyDto user);
         public Task<string> CreateForgotPasswordToken();
         public Task<string> UpdateForgotPasswordTokenAsync(string Email, string Token); //replace variables with dto
         public Task<bool> SendForgotPasswordEmailAsync(string Email, string Token);
