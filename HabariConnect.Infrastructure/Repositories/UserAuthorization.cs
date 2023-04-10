@@ -78,5 +78,38 @@ namespace HabariConnect.Infrastructure.Repositories
                 }
             }
         }
+
+        public bool VerifyPasswordAsync(string Password, byte[] PasswordHash, byte[] PasswordSalt)
+        {
+            if (string.IsNullOrWhiteSpace(Password))
+            {
+                throw new ArgumentNullException(nameof(Password));
+            }
+
+            if (PasswordHash.Length != 64)
+            {
+                throw new ArgumentException("Invalid length of password hash (64 bytes expected).", nameof(PasswordHash));
+            }
+
+            if (PasswordSalt.Length != 128)
+            {
+                throw new ArgumentException("Invalid length of password salt (128 bytes expected).", nameof(PasswordSalt));
+            }
+
+            using (var hmac = new HMACSHA512(PasswordSalt))
+            {
+                var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(Password));
+
+                for (int i = 0; i < computedHash.Length; i++)
+                {
+                    if (computedHash[i] != PasswordHash[i])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }
