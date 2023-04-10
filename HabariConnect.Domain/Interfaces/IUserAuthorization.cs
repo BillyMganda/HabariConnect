@@ -13,10 +13,10 @@ namespace HabariConnect.Domain.Interfaces
         public string CreateJwtToken(User user);
         public Task UpdateUserAsync(UserModifyDto user);
         public Task<string> CreateForgotPasswordToken();
-        public Task<bool> UpdateForgotPasswordTokenAsync(string Email, string Token); //replace variables with dto
+        public Task<bool> UpdateForgotPasswordTokenAsync(string Email);
         public Task SendForgotPasswordEmailAsync(string recipient, string subject, string body);
         public Task<User> GetUserByTokenAsync(string Token);
         public void CreatePasswordHash(string Password, out byte[] PasswordHash, out byte[] PasswordSalt);
-        public Task ResetPasswordAsync(UserResetPasswordDto dto, byte[] hash, byte[] salt); 
+        public Task<User> ResetPasswordAsync(UserResetPasswordDto dto, byte[] hash, byte[] salt);
     }
 }

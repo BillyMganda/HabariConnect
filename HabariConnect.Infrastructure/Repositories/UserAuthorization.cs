@@ -2,7 +2,6 @@
 using HabariConnect.Domain.Entities;
 using HabariConnect.Domain.Interfaces;
 using HabariConnect.Infrastructure.Data;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -204,5 +203,6 @@ namespace HabariConnect.Infrastructure.Repositories
             }
             return user!;
         }
+        
     }
 }
