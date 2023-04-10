@@ -14,7 +14,7 @@ namespace HabariConnect.Domain.Interfaces
         public Task UpdateUserAsync(UserModifyDto user);
         public Task<string> CreateForgotPasswordToken();
         public Task<bool> UpdateForgotPasswordTokenAsync(string Email, string Token); //replace variables with dto
-        public Task<bool> SendForgotPasswordEmailAsync(string Email, string Token);
+        public Task SendForgotPasswordEmailAsync(string recipient, string subject, string body);
         public Task<User> GetUserByTokenAsync(string Token);
         public void CreatePasswordHash(string Password, out byte[] PasswordHash, out byte[] PasswordSalt);
         public Task ResetPasswordAsync(); //create reset password dto

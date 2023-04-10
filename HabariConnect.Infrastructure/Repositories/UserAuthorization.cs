@@ -167,5 +167,22 @@ namespace HabariConnect.Infrastructure.Repositories
             }
             return false;
         }
+
+        public async Task SendForgotPasswordEmailAsync(string recipient, string subject, string body)
+        {
+            var smtpSettings = _configuration.GetSection("SmtpSettings");
+            using (var client = new SmtpClient(smtpSettings["Server"], int.Parse(smtpSettings["Port"])))
+            {
+                client.EnableSsl = bool.Parse(smtpSettings["UseSsl"]);
+                client.Credentials = new NetworkCredential(smtpSettings["Username"], smtpSettings["Password"]);
+
+                using (var message = new MailMessage(smtpSettings["Username"], recipient))
+                {
+                    message.Subject = subject;
+                    message.Body = body;
+                    await client.SendMailAsync(message);
+                }
+            }
+        }
     }
 }
