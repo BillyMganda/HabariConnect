@@ -190,5 +190,10 @@ namespace HabariConnect.Infrastructure.Repositories
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.ForgotPasswordToken == Token);
             return user!;
         }
+
+        public Task ResetPasswordAsync()
+        {
+
+        }
     }
 }
