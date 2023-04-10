@@ -156,5 +156,16 @@ namespace HabariConnect.Infrastructure.Repositories
             return Task.FromResult(token);
         }
 
+        public async Task<bool> UpdateForgotPasswordTokenAsync(string Email)
+        {
+            var token = CreateForgotPasswordToken();
+            var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == Email);
+            if(user != null)
+            {
+                user.ForgotPasswordToken = await token;
+                return true;
+            }
+            return false;
+        }
     }
 }
