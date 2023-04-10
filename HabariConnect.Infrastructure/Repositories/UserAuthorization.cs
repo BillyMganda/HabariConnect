@@ -184,5 +184,11 @@ namespace HabariConnect.Infrastructure.Repositories
                 }
             }
         }
+
+        public async Task<User> GetUserByTokenAsync(string Token)
+        {
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.ForgotPasswordToken == Token);
+            return user!;
+        }
     }
 }
