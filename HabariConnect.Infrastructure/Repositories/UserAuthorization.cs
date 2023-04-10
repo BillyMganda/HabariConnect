@@ -191,9 +191,18 @@ namespace HabariConnect.Infrastructure.Repositories
             return user!;
         }
 
-        public Task ResetPasswordAsync()
+        public async Task<User> ResetPasswordAsync(UserResetPasswordDto dto, byte[] hash, byte[] salt)
         {
-
+            var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.ForgotPasswordToken == dto.token);
+            if (user != null)
+            {
+                user.PasswordHash = hash;
+                user.PasswordSalt = salt;
+                user.ForgotPasswordToken = "";
+                await _dbContext.SaveChangesAsync();
+                return user;
+            }
+            return user!;
         }
     }
 }
